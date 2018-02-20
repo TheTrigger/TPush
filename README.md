@@ -85,6 +85,6 @@ void loop() {
 
 ```
 
-The digital pins set as inputs if not connected enter a floating state, ie they switch from 0 to 1 continuously. Use a [pull resistor](https://en.wikipedia.org/wiki/Pull-up_resistor).
+To avoid floating state use a [pull resistor](https://en.wikipedia.org/wiki/Pull-up_resistor).
 
-If the button is ACTIVE LOW, you can take advantage by the internal pullup resistance. With that is not possible to use pin 13. [See documentation](https://www.arduino.cc/en/Tutorial/DigitalPins).
+If the button is ACTIVE LOW you can use the internal pullup resistance. Unable on pin 13. [See documentation](https://www.arduino.cc/en/Tutorial/DigitalPins).
