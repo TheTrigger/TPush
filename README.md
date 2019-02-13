@@ -1,9 +1,12 @@
 # TPush
-Arduino debounce system and time management library
+Arduino debounce system + time management library
 
 # How To Use
 
-First of all, add TPush to your [Arduino IDE libraries](https://www.arduino.cc/en/Guide/Libraries)
+- Add TPush to your [Arduino IDE libraries](https://www.arduino.cc/en/Guide/Libraries)
+- Include the library `#include <TPush.h>`
+- Initialize a component `TPush ButtonX;`
+
 
 ## Click
 ```C++
@@ -31,7 +34,7 @@ void loop() {
     }
 }
 ```
-Default wait-time is 10 milliseconds, enough for **membrane** buttons, for **lamella** is recommend around 150ms.
+Default wait-time is 10 milliseconds, enough for **membranes**, use 150ms for **lamella** buttons.
 
 Click is activated on the activation fron, if you need the release frond see the Keep function, which has a double use.
 
@@ -58,7 +61,7 @@ void loop() {
 }
 ```
 
-Here ```t``` is set to each frame
+Here ```t``` is set each frame
 ```C++
 if (t = Button1.KeepHold(100, true) > 1000) {
 ```
@@ -75,16 +78,18 @@ void setup() {
 
 void loop() {
     if (TIMER.Wait(150)) {
-        Serial.println("Yeah, once ever 150ms");
+        Serial.println("Once every 150ms");
     }
 
     if (TIMER.Wait(500, 2)) {
-        Serial.println("Same thing here but 500ms..");
+        Serial.println("Use the second parameter for multiple separate timers, on the same object");
     }
 }
 
 ```
+NB: to avoid waste of memory you can use Wait() on Buttons already declared instead of declaring timer objects. Use the second parameter as arrays index.
 
-To avoid floating state use a [pull resistor](https://en.wikipedia.org/wiki/Pull-up_resistor).
 
-If the button is ACTIVE LOW you can use the internal pullup resistance. Unable on pin 13. [See documentation](https://www.arduino.cc/en/Tutorial/DigitalPins).
+Avoid floating state useing a [pull resistor](https://en.wikipedia.org/wiki/Pull-up_resistor).
+
+If the buttons is ACTIVE LOW you can use internal pull-up resistance (not on pin 13). [See documentation](https://www.arduino.cc/en/Tutorial/DigitalPins).
