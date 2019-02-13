@@ -24,7 +24,7 @@ void loop() {
 
     // minimum active time of 150ms. 
     if (Button1.Click(150)) {
-        /** this is triggered once till release **/
+        // triggered once, till released
         Serial.println("Button1 Pressed!");
     }
 
@@ -36,7 +36,6 @@ void loop() {
 ```
 Default wait-time is 10 milliseconds, enough for **membranes**, use 150ms for **lamella** buttons.
 
-Click is activated on the activation fron, if you need the release frond see the Keep function, which has a double use.
 
 ## Double Click
 
@@ -61,7 +60,7 @@ void loop() {
 }
 ```
 
-Here ```t``` is set each frame
+Here `t` is set each frame
 ```C++
 if (t = Button1.KeepHold(100, true) > 1000) {
 ```
